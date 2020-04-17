@@ -7,7 +7,6 @@
 </h3>
 
 <div align="center">
-  <a href="#instrucoes-de-uso">📦 Instruções de uso</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#api">📊 API</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#front">💻 Front</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#app">📱 App</a>
@@ -15,11 +14,13 @@
 
 ### 📊 API
 
+<a name="api"></a>
+
 1. Antes de rodar a API, você vai precisar rodar um banco de dados PostgreSQL localmente através do Docker e criar uma porta para utilizar a fila do Redis.
 
 - Para isso, utilize o comando `docker run --name <nome_do_container> -e POSTGRES_DB=fastfeet -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres` para criar o container do banco de dados.
 
-Obs.: O nome do banco e senha podem ser alterados, porém deverá mudar no `.env` da API.
+Obs.: O nome do banco e senha podem ser alterados, porém deverá mudar no `.env` da API. </nr>
 Obs².: Na minha máquina ocorre um erro com a porta 5432 quando vou rodar o container do `postgres`, nesses casos eu mudo de `5432:5432` para `5434:5432`.
 
 - Utilize também o comando `docker run --name <nome_do_container> -p 6379:6379 -d -t redis:alpine` para criar o container do Redis.
@@ -35,11 +36,15 @@ Obs².: Na minha máquina ocorre um erro com a porta 5432 quando vou rodar o con
 
 ### 💻 Front
 
+<a name="front"></a>
+
 1. Acesse a pasta /frontend
 2. Através do terminal, nessa pasta, execute o comando `yarn` para instalar as dependências necessárias.
 3. Execute a aplicação com `yarn start` e conseguirá acessá-lo através do `localhost`.
 
 ### 📱 App
+
+<a name="app"></a>
 
 ## Importante: Foi desenvolvida somente para Android!
 
