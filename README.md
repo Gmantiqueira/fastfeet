@@ -18,20 +18,15 @@
 
 1. Antes de rodar a API, você vai precisar rodar um banco de dados PostgreSQL localmente através do Docker e criar uma porta para utilizar a fila do Redis.
 
-- Para isso, utilize o comando `docker run --name <nome_do_container> -e POSTGRES_DB=fastfeet -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres` para criar o container do banco de dados.
-
-Obs.: O nome do banco e senha podem ser alterados, porém deverá mudar no `.env` da API. </nr>
-Obs².: Na minha máquina ocorre um erro com a porta 5432 quando vou rodar o container do `postgres`, nesses casos eu mudo de `5432:5432` para `5434:5432`.
-
-- Utilize também o comando `docker run --name <nome_do_container> -p 6379:6379 -d -t redis:alpine` para criar o container do Redis.
+- Para isso, dentro da pasta /backend, execute o comando `docker-compose up -d` para criar os containers.
 
 2. Acesse a pasta /backend
 3. Através do terminal, nessa pasta, execute o comando `yarn` para instalar as dependências necessárias.
 4. No arquivo `.env.example`, renomear para `.env`.
-5. Verificar se os dados estão Ok de acordo com o banco criado no container.
-6. Para utilização do SMTP com algum serviço externo como o Mailtrap, alterar as variáveis `MAIL_USER` e `MAIL_PASS` do `.env`.
-7. Para utilização do Sentry, alterar a variável `SENTRY_DSN`.
-8. Em um terminal, executar o comando `yarn queue` para iniciar a fila do Redis.
+5. Para utilização do SMTP com algum serviço externo como o Mailtrap, alterar as variáveis `MAIL_USER` e `MAIL_PASS` do `.env`.
+6. Para utilização do Sentry, alterar a variável `SENTRY_DSN`.
+7. Antes de iniciar a aplicação, executar `npx sequelize db:migrate` para criar as tabelas e `npx sequelize db:seed:all` para criar o login do Admin(Front).
+8. Em um terminal, executar o comando `yarn queue` para iniciar a fila do Redis (Utilizado para envio de emails).
 9. Em outro terminal, executar o comando `yarn dev` para iniciar o servidor da API.
 
 ### 💻 Front
@@ -41,6 +36,7 @@ Obs².: Na minha máquina ocorre um erro com a porta 5432 quando vou rodar o con
 1. Acesse a pasta /frontend
 2. Através do terminal, nessa pasta, execute o comando `yarn` para instalar as dependências necessárias.
 3. Execute a aplicação com `yarn start` e conseguirá acessá-lo através do `localhost`.
+4. Após ter seguidos os passos da API de criar as migrations e seeds, você poderá logar utilizando o login `admin@fastfeet.com` e a senha `123456`.
 
 ### 📱 App
 
